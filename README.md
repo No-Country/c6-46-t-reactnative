@@ -25,7 +25,7 @@ Jugador:
 
 ### Backend:
 ![](https://miro.medium.com/max/365/1*Jr3NFSKTfQWRUyjblBSKeg.png)
-![](https://kinsta.com/wp-content/uploads/2022/02/postgres-logo.png)
+![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeat0hUM9FLToo0Km9n1yzZyrm2Ok8UZgu0MizAq_nx8SE51IeS5dDEAYo2d-xdQ0kBBI&usqp=CAU)
 ![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWQrRvY4xveXSvqByCyeYmVeeadGe-N_bBOXzwZd9yBpZ-R4TjrmDbjI94jojIVwDNpDs&usqp=CAU)
 
 ## Colaboradores:
