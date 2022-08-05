@@ -21,7 +21,7 @@ Jugador:
 ## Tecnologías aplicadas:
 
 ### Frontend:
-![](https://originapps.io/wp-content/uploads/2019/03/React-Native.png)
+![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtdTvLrGCErAzwhqYo7sNWS5duYJXQq2vZe75fa2uZg4YaaO1XLffRVm4FY7MmTefENKk&usqp=CAU)
 
 ### Backend:
 ![](https://miro.medium.com/max/365/1*Jr3NFSKTfQWRUyjblBSKeg.png)
