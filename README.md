@@ -23,7 +23,7 @@ Jugador:
 ### Frontend:
 ![](https://originapps.io/wp-content/uploads/2019/03/React-Native.png)
 
-Backend:
+### Backend:
 ![](https://miro.medium.com/max/365/1*Jr3NFSKTfQWRUyjblBSKeg.png)
 ![](https://kinsta.com/wp-content/uploads/2022/02/postgres-logo.png)
 ![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWQrRvY4xveXSvqByCyeYmVeeadGe-N_bBOXzwZd9yBpZ-R4TjrmDbjI94jojIVwDNpDs&usqp=CAU)
