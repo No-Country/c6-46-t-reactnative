@@ -25,7 +25,7 @@ Jugador:
 
 Backend:
 ![](https://miro.medium.com/max/365/1*Jr3NFSKTfQWRUyjblBSKeg.png)
-![](https://www.ovhcloud.com/sites/default/files/styles/text_media_horizontal/public/2021-09/ECX-1909_Hero_PostgreSQL_600x400%402x.png)
+![](https://kinsta.com/wp-content/uploads/2022/02/postgres-logo.png)
 ![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWQrRvY4xveXSvqByCyeYmVeeadGe-N_bBOXzwZd9yBpZ-R4TjrmDbjI94jojIVwDNpDs&usqp=CAU)
 
 ## Colaboradores:
