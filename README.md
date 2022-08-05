@@ -6,24 +6,26 @@
 
 No jugador:
 1. Capacidad para crear torneo
-2. Posibilidad de crear categorías según deporte
-3. Opción para invitar participantes
-4. Ver ranking de posiciones
-5. Cambiar a usuario "Jugardor"
+2. Capacidad de cobrar por una inscripcion al evento creado
+3. Capacidad de administrar el evento
 
 Jugador: 
 1. Crear usuario
 2. Inscripción a torneos
-3. Apostar por un o más equipos
+3. Ver estadísticas de los torneos 
 4. Ver perfil
-5. Ver estadísticas de su perfil
-6.  Anotarse en equipo según deporte
+5. Tener la posibilidad de apostar
+6. Anotarse en equipo según deporte
+
 
 ## Tecnologías aplicadas:
 
+### Frontend:
 ![](https://originapps.io/wp-content/uploads/2019/03/React-Native.png)
 
-![](https://nodejs.org/static/images/logos/nodejs-new-pantone-black.svg)
+Backend:
+![](https://miro.medium.com/max/365/1*Jr3NFSKTfQWRUyjblBSKeg.png)
+![]()
 
 ## Colaboradores:
 
