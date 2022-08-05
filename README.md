@@ -1,7 +1,7 @@
 # App de Campeonatos
 
 
-- Aplicación mobil para la creación de eventos deportivos.
+- Aplicación móvil para la creación de eventos deportivos.
 - Dos tipos de usuarios definidos como:
 
 No jugador:
@@ -36,4 +36,3 @@ Jugador:
 - Nahuel Demian Fanego Paz (Front-end developer)
 - Yamil Daza (Front-end developer)
 - Estanislao Caputto Alekian (Front-end developer)
-- Juan Cruz Bonelli (Tester QA)
