@@ -11,6 +11,9 @@ export const DrawerNav = () => {
   return (
     <Drawer.Navigator
       screenOptions={{
+        drawerPosition: 'right',
+        swipeEnabled: false,
+
         headerTintColor: '#FFFFF0',
         headerStyle: { backgroundColor: 'orange' },
         headerRight: () => {
@@ -20,7 +23,7 @@ export const DrawerNav = () => {
         headerShown: false,
       }}
     >
-      <Drawer.Screen name="Home" component={StackNav}></Drawer.Screen>
+      <Drawer.Screen name="Cerrar" component={StackNav}></Drawer.Screen>
       <Drawer.Screen name="Settings" component={Settings}></Drawer.Screen>
     </Drawer.Navigator>
   );

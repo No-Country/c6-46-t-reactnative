@@ -16,6 +16,8 @@ export const StackNav = () => {
       screenOptions={{
         headerTintColor: '#FFFFF0',
         headerStyle: { backgroundColor: 'orange' },
+        headerTitleStyle: { fontSize: 32 },
+
         headerRight: () => {
           return isLoggedIn ? <Avatar /> : null;
         },
