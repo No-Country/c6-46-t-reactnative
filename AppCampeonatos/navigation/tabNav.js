@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Perfil, PerfilTabs } from '../screens/perfil';
 import { Torneos, TorneosStack } from '../screens/torneos';
-import { Torneo } from '../screens/torneo';
 import { Rankings } from '../screens/rankings';
 import { LogIn } from '../screens/logIn';
 import { getLoggedState } from '../redux/reducers/isLoggedReducer';
 import { useSelector } from 'react-redux';
+import { DrawerNav } from './drawerNav';
+import { Perfil } from '../screens/perfil';
 
 const Tabs = createBottomTabNavigator();
 

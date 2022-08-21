@@ -12,9 +12,14 @@ export const MyButton = ({
 }) => {
   /* const loggedState = useSelector(getLoggedState); */
   const handlePress = () => {
-    if (dispatch === undefined) {
-      navigation.navigate(toScreen, toScreenParams);
-    } else {
+    if (toScreen) {
+      if (toScreenParams) {
+        navigation.navigate(toScreen, toScreenParams);
+      } else {
+        navigation.navigate(toScreen);
+      }
+    }
+    if (dispatch) {
       dispatch();
     }
   };

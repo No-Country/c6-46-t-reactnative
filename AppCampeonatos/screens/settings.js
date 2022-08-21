@@ -1,15 +1,26 @@
 import React from 'react';
 import { View } from 'react-native';
 import { MyButton } from '../components/myButton';
-import { Perfil } from './perfil';
-import { Torneos } from './torneos';
+import { useDispatch } from 'react-redux';
+import { setLoggedState } from '../redux/reducers/isLoggedReducer';
 
 export const Settings = ({ navigation }) => {
+  const dispatch = useDispatch();
   return (
-    <View>
-      <MyButton text="Cancelar" toScreen={Torneos} navigation={navigation} />
+    <View style={{ marginTop: 40 }}>
+      <MyButton
+        text="Editar Perfil"
+        /* toScreen={"Editar Perfil"} */
+        dispatch={() => navigation.goBack()}
+        navigation={navigation}
+      />
 
-      <MyButton text="Confirmar" toScreen={Perfil} navigation={navigation} />
+      <MyButton
+        text="Cerrar Sesion"
+        dispatch={() => dispatch(setLoggedState())}
+        toScreen={'Campeones'}
+        navigation={navigation}
+      />
     </View>
   );
 };

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { TabNav } from './tabNav';
 import { Settings } from '../screens/settings';
-import { Avatar } from '../components/avatar';
-import { StackNav } from './navigation';
+import { Perfil } from '../screens/perfil';
 
 const Drawer = createDrawerNavigator();
 
@@ -23,8 +21,8 @@ export const DrawerNav = () => {
         headerShown: false,
       }}
     >
-      <Drawer.Screen name="Cerrar" component={StackNav}></Drawer.Screen>
-      <Drawer.Screen name="Settings" component={Settings}></Drawer.Screen>
+      <Drawer.Screen name="Atras" component={Perfil}></Drawer.Screen>
+      <Drawer.Screen name="Configuracion" component={Settings}></Drawer.Screen>
     </Drawer.Navigator>
   );
 };
