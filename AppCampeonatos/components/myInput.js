@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { setEmail, setPassword } from '../redux/reducers/userInfoReducer';
 
 export const MyInput = ({ label }) => {
+  const dispatch = useDispatch();
+  const handleChange = (newInput) => {
+    switch (label) {
+      case 'E-mail':
+        dispatch(setEmail(newInput));
+        break;
+      case 'Contraseña':
+        dispatch(setPassword(newInput));
+        break;
+      default:
+        break;
+    }
+  };
   return (
     <View
       style={{
@@ -15,6 +30,7 @@ export const MyInput = ({ label }) => {
     >
       <Text style={{ flex: 1 }}>{label}:</Text>
       <TextInput
+        onChangeText={handleChange}
         style={{
           flex: 3,
           borderRadius: 5,

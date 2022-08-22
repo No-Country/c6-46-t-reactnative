@@ -4,12 +4,13 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { setLoggedState } from '../redux/reducers/isLoggedReducer';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
+import styled from 'styled-components/native';
 
 export const Perfil = ({ navigation }) => {
   /* const dispatch = useDispatch();
   const navigation = useNavigation(); */
   return (
-    <View style={{ height: '100%', width: '100%' }}>
+    <View style={{ flex: 1 }}>
       <TouchableOpacity onPress={() => navigation.navigate('Configuracion')}>
         <Text
           style={{
@@ -28,21 +29,74 @@ export const Perfil = ({ navigation }) => {
       <Image
         source={profile.avatar}
         style={{
-          flex: 1,
-          position: 'absolute',
+          flex: 2,
+          position: 'relative',
+          top: '-7%',
           resizeMode: 'contain',
           width: '100%',
-          height: '70%',
+
           zIndex: -10,
         }}
       />
-      <Text>{profile.lastName}</Text>
-      <Text>{profile.firstName}</Text>
-      <Text>{profile.sports[0]}</Text>
-      <Text>{profile.teams[0]}</Text>
+      <View style={{ flex: 1, margin: 10 }}>
+        <View style={rowStyle}>
+          <Cell text={'Edad'}></Cell>
+          <Cell text={'Titulos'}></Cell>
+        </View>
+        <View style={rowStyle}>
+          <Cell text={'31'}></Cell>
+          <Cell text={'8'}></Cell>
+        </View>
+        <View style={rowStyle}>
+          <Cell></Cell>
+          <Cell text={'Rank'}></Cell>
+          <Cell text={'Victorias'}></Cell>
+          <Cell text={'Derrotas'}></Cell>
+        </View>
+        <View style={rowStyle}>
+          <Cell text={'Actual'}></Cell>
+          <Cell text={'14'}></Cell>
+          <Cell text={'5'}></Cell>
+          <Cell text={'5'}></Cell>
+        </View>
+        <View style={rowStyle}>
+          <Cell></Cell>
+          <Cell text={'Rank'}></Cell>
+          <Cell text={'Victorias'}></Cell>
+          <Cell text={'Derrotas'}></Cell>
+        </View>
+        <View style={rowStyle}>
+          <Cell text={'Historico'}></Cell>
+          <Cell text={'3'}></Cell>
+          <Cell text={'5'}></Cell>
+          <Cell text={'5'}></Cell>
+        </View>
+      </View>
     </View>
   );
 };
+
+const rowStyle = {
+  flexDirection: 'row',
+  paddingHorizontal: 10,
+  paddingVertical: 2,
+};
+
+const Cell = ({ text }) => {
+  return (
+    <TextCell>
+      <Text>{text}</Text>
+    </TextCell>
+  );
+};
+
+const TextCell = styled.View`
+  width: 23%;
+  align-items: flex-end;
+  border-bottom-width: 1px;
+`;
+
+const TableRow = () => {};
 
 const profile = {
   avatar: {
