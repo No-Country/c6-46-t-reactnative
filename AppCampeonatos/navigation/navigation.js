@@ -9,6 +9,7 @@ import { DrawerNav } from './drawerNav';
 import { useSelector } from 'react-redux';
 import { getLoggedState } from '../redux/reducers/isLoggedReducer';
 import { Settings } from '../screens/settings';
+import { CrearTorneo } from '../screens/crearTorneo';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,7 @@ export const StackNav = () => {
       <Stack.Screen name="Torneo" component={Torneo} />
       <Stack.Screen name="Registro" component={Registrarse} />
       <Stack.Screen name="Configuracion" component={Settings} />
+      <Stack.Screen name="Crear Torneo" component={CrearTorneo}></Stack.Screen>
     </Stack.Navigator>
   );
 };

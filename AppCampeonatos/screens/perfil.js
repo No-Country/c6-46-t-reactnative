@@ -14,7 +14,6 @@ export const Perfil = ({ navigation }) => {
       <TouchableOpacity onPress={() => navigation.navigate('Configuracion')}>
         <Text
           style={{
-            position: 'relative',
             top: 5,
             left: '88%',
             color: 'orange',
@@ -34,12 +33,11 @@ export const Perfil = ({ navigation }) => {
           top: '-7%',
           resizeMode: 'contain',
           width: '100%',
-
           zIndex: -10,
         }}
       />
       <View style={{ flex: 1, margin: 10 }}>
-        <View style={rowStyle}>
+        <View style={{ ...rowStyle, ...{ backgroundColor: 'lightgrey' } }}>
           <Cell text={'Edad'}></Cell>
           <Cell text={'Titulos'}></Cell>
         </View>
@@ -47,7 +45,7 @@ export const Perfil = ({ navigation }) => {
           <Cell text={'31'}></Cell>
           <Cell text={'8'}></Cell>
         </View>
-        <View style={rowStyle}>
+        <View style={{ ...rowStyle, ...{ backgroundColor: 'lightgrey' } }}>
           <Cell></Cell>
           <Cell text={'Rank'}></Cell>
           <Cell text={'Victorias'}></Cell>
@@ -59,7 +57,12 @@ export const Perfil = ({ navigation }) => {
           <Cell text={'5'}></Cell>
           <Cell text={'5'}></Cell>
         </View>
-        <View style={rowStyle}>
+        <View
+          style={{
+            ...rowStyle,
+            ...{ backgroundColor: 'lightgrey' },
+          }}
+        >
           <Cell></Cell>
           <Cell text={'Rank'}></Cell>
           <Cell text={'Victorias'}></Cell>

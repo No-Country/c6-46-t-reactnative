@@ -55,6 +55,13 @@ const profiles = [
 
 export const Torneos = ({ navigation }) => {
   const isLoggedIn = useSelector(getLoggedState);
+  const handlePress = () => {
+    if (isLoggedIn) {
+      navigation.navigate('Crear Torneo');
+    } else {
+      navigation.navigate('Iniciar Sesion');
+    }
+  };
   return (
     <>
       <ScrollView>
@@ -103,7 +110,7 @@ export const Torneos = ({ navigation }) => {
           })}
         </StyledView>
       </ScrollView>
-      <TouchableOpacity onPress={() => navigation.navigate('Iniciar Sesion')}>
+      <TouchableOpacity onPress={handlePress}>
         <Plus>
           <Text
             style={{
