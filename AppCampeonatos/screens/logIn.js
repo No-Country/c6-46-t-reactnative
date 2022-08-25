@@ -33,7 +33,7 @@ export const LogIn = ({ navigation }) => {
           >
             <Text
               style={{
-                fontSize: 40,
+                fontSize: 50,
                 color: 'orange',
                 fontWeight: '700',
               }}
@@ -52,9 +52,10 @@ export const LogIn = ({ navigation }) => {
             />
             <Text
               style={{
-                marginVertical: 5,
+                marginVertical: 10,
                 marginHorizontal: 10,
                 textAlign: 'right',
+                fontSize: 16,
               }}
             >
               Olvidaste tu constraseña?
@@ -63,7 +64,7 @@ export const LogIn = ({ navigation }) => {
           <View
             style={{
               flex: 3,
-              justifyContent: 'center',
+              justifyContent: 'space-around',
               width: '80%',
               marginHorizontal: 'auto',
               alignSelf: 'center',
@@ -74,7 +75,7 @@ export const LogIn = ({ navigation }) => {
               dispatch={() => dispatch(setLoggedState())}
             />
             <MyButton
-              text={'Registrarse'}
+              text={'Registrarme'}
               toScreen={'Registro'}
               navigation={navigation}
             />

@@ -12,7 +12,7 @@ export const MyInput = ({ label, action }) => {
   };
   return (
     <View style={{ marginTop: 10, marginLeft: 10 }}>
-      <Text>{label}:</Text>
+      <Text style={{ fontSize: 20, fontWeight: '500' }}>{label}:</Text>
       <View
         style={{
           flexDirection: 'row',
@@ -29,6 +29,7 @@ export const MyInput = ({ label, action }) => {
             paddingVertical: 5,
             paddingHorizontal: 5,
             fontWeight: '500',
+            fontSize: 16,
           }}
         />
       </View>

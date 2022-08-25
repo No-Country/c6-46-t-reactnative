@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, TextInput } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Platform,
+} from 'react-native';
 import { MyInput } from '../components/myInput';
 import { MyButton } from '../components/myButton';
 import DatePicker from 'react-native-modern-datepicker';
@@ -43,67 +52,83 @@ export const CrearTorneo = ({ navigation }) => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
-      <MyInput
-        label={'Nombre del Torneo'}
-        action={(data) => dispatch(setName(data))}
-      />
-      <MyInput
-        label={'Descripcion del Torneo'}
-        action={(data) => dispatch(setDescription(data))}
-      />
-      <MyInput
-        label={'Ubicacion'}
-        action={(data) => dispatch(setLocation(data))}
-      />
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'column',
-          marginTop: 15,
-          marginHorizontal: 10,
-        }}
-      >
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-            alignItems: 'baseline',
-            justifyContent: 'space-around',
-          }}
-        >
-          <Calendar
-            id={3}
-            label={'Cierre de Inscripcion'}
-            date={useSelector(getInscriptionDate)}
-            handlePress={handlePress}
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={{ flex: 1 }}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={{ flex: 1 }}>
+          <MyInput
+            label={'Nombre del Torneo'}
+            action={(data) => dispatch(setName(data))}
           />
-          <Calendar
-            id={1}
-            label={'Inicio del Evento'}
-            date={useSelector(getStartDate)}
-            handlePress={handlePress}
+          <MyInput
+            label={'Descripcion del Torneo'}
+            action={(data) => dispatch(setDescription(data))}
           />
-          <Calendar
-            id={2}
-            label={'Finalizacion del Evento'}
-            date={useSelector(getEndDate)}
-            handlePress={handlePress}
+          <MyInput
+            label={'Ubicacion'}
+            action={(data) => dispatch(setLocation(data))}
           />
+          <View
+            style={{
+              flex: 1,
+              flexDirection: 'column',
+              marginTop: 15,
+              marginHorizontal: 10,
+            }}
+          >
+            <View
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+                alignItems: 'baseline',
+                justifyContent: 'space-around',
+              }}
+            >
+              <Calendar
+                id={3}
+                label={'Cierre de Inscripcion'}
+                date={useSelector(getInscriptionDate)}
+                handlePress={handlePress}
+              />
+              <Calendar
+                id={1}
+                label={'Inicio del Evento'}
+                date={useSelector(getStartDate)}
+                handlePress={handlePress}
+              />
+              <Calendar
+                id={2}
+                label={'Finalizacion del Evento'}
+                date={useSelector(getEndDate)}
+                handlePress={handlePress}
+              />
+            </View>
+            {showModal && (
+              <View
+                style={{
+                  position: 'absolute',
+                  top: '-40%',
+                  width: '100%',
+                  height: '80%',
+                }}
+              >
+                <DatePicker
+                  onSelectedChange={(date) => handleSelect(date)}
+                  style={{ flex: 1 }}
+                ></DatePicker>
+              </View>
+            )}
+            <MyButton
+              text={'Continuar'}
+              toScreen={'Modalidades'}
+              navigation={navigation}
+            ></MyButton>
+          </View>
         </View>
-        {showModal && (
-          <DatePicker
-            onSelectedChange={(date) => handleSelect(date)}
-            style={{ flex: 1 }}
-          ></DatePicker>
-        )}
-        <MyButton
-          text={'Continuar'}
-          toScreen={'Modalidades'}
-          navigation={navigation}
-        ></MyButton>
-      </View>
-    </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -113,7 +138,7 @@ const Calendar = ({ label, id, date, handlePress }) => {
       onPress={() => handlePress(id)}
       style={{ width: '30%', justifyContent: 'flex-start' }}
     >
-      <Text>{label}:</Text>
+      <Text style={{ fontSize: 16, fontWeight: '500' }}>{label}:</Text>
       <TextInput
         style={{
           width: '100%',
@@ -125,6 +150,7 @@ const Calendar = ({ label, id, date, handlePress }) => {
           borderWidth: 1,
           borderRadius: 5,
           color: 'hsl(0,0%,45%)',
+          fontWeight: '500',
         }}
         editable={false}
         value={date}

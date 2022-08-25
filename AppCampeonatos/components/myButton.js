@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity, Text, View } from 'react-native';
 
 export const MyButton = ({
   text,
@@ -24,7 +24,7 @@ export const MyButton = ({
     <TouchableOpacity
       style={{
         paddingHorizontal: 15,
-        paddingVertical: 10,
+        paddingVertical: 7,
         backgroundColor: 'orange',
         flexDirection: 'row',
         borderRadius: 5,
@@ -37,7 +37,7 @@ export const MyButton = ({
     >
       <Text
         style={{
-          fontSize: 12,
+          fontSize: 16,
           color: 'black',
           fontWeight: '400',
         }}

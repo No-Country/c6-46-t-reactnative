@@ -13,17 +13,17 @@ export const Rankings = () => {
           alignItems: 'center',
         }}
       >
-        <Cell style={{ flex: 1 }}>
-          <Text style={{ fontWeight: '900' }}>Ranking</Text>
+        <Cell style={{ flex: 1.2 }}>
+          <Text style={{ fontWeight: '700', fontSize: 18 }}>Ranking</Text>
         </Cell>
-        <Cell style={{ flex: 1 }}>
-          <Text style={{ fontWeight: '700' }}>Jugador</Text>
+        <Cell style={{ flex: 1.9 }}>
+          <Text style={{ fontWeight: '700', fontSize: 18 }}>Jugador</Text>
         </Cell>
-        <Cell style={{ flex: 1 }}>
-          <Text style={{ fontWeight: '700' }}>Provincia</Text>
+        <Cell style={{ flex: 1.1 }}>
+          <Text style={{ fontWeight: '700', fontSize: 18 }}>Provincia</Text>
         </Cell>
-        <Cell style={{ flex: 1 }}>
-          <Text style={{ fontWeight: '700' }}>Puntos</Text>
+        <Cell style={{ flex: 1.1 }}>
+          <Text style={{ fontWeight: '700', fontSize: 18 }}>Pts</Text>
         </Cell>
       </View>
       <ScrollView
@@ -56,17 +56,19 @@ const TableRow = ({ data, color }) => {
         paddingVertical: 10,
       }}
     >
-      <Cell style={{ flex: 1 }}>
-        <Text style={{ fontWeight: '500' }}>#{data.ranking}</Text>
+      <Cell style={{ flex: 1.1 }}>
+        <Text style={{ fontWeight: '500', fontSize: 18 }}>#{data.ranking}</Text>
+      </Cell>
+      <Cell style={{ flex: 2 }}>
+        <Text style={{ fontWeight: '700', fontSize: 14 }}>
+          {data.name.toUpperCase()}
+        </Text>
       </Cell>
       <Cell style={{ flex: 1 }}>
-        <Text>{data.name}</Text>
+        <Text style={{ fontSize: 18 }}>{data.provincia}</Text>
       </Cell>
       <Cell style={{ flex: 1 }}>
-        <Text>{data.provincia}</Text>
-      </Cell>
-      <Cell style={{ flex: 1 }}>
-        <Text>{data.puntos}</Text>
+        <Text style={{ fontSize: 18 }}>{data.puntos}</Text>
       </Cell>
     </View>
   );
@@ -86,7 +88,7 @@ const data = [
     categorias: ['A', 'B'],
   },
   {
-    name: 'jose lopez',
+    name: 'juan jose perez carreras lopez',
     ranking: 2,
     provincia: 'MI',
     puntos: 1100,

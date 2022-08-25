@@ -35,16 +35,24 @@ export const Modalidades = ({}) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <Text style={{ marginHorizontal: 10, marginTop: 10, fontWeight: '600' }}>
+      <Text
+        style={{
+          marginHorizontal: 10,
+          marginTop: 5,
+          fontWeight: '600',
+          fontSize: 18,
+        }}
+      >
         Modos
       </Text>
       <View
         style={{
           flexDirection: 'row',
           flexWrap: 'wrap',
-          margin: 5,
+          marginHorizontal: 15,
           borderRadius: 5,
           borderWidth: 1,
+          justifyContent: 'center',
         }}
       >
         {Object.entries(DATA.modes).map((mode, index) => {
@@ -58,16 +66,24 @@ export const Modalidades = ({}) => {
           );
         })}
       </View>
-      <Text style={{ marginHorizontal: 10, marginTop: 10, fontWeight: '600' }}>
+      <Text
+        style={{
+          marginHorizontal: 10,
+          marginTop: 5,
+          fontWeight: '600',
+          fontSize: 18,
+        }}
+      >
         Categorias Libres
       </Text>
       <View
         style={{
           flexDirection: 'row',
           flexWrap: 'wrap',
-          margin: 5,
+          marginHorizontal: 15,
           borderRadius: 5,
           borderWidth: 1,
+          justifyContent: 'center',
         }}
       >
         {Object.entries(DATA.categories).map((categorie, index) => {
@@ -81,23 +97,40 @@ export const Modalidades = ({}) => {
           );
         })}
       </View>
-      <Text style={{ marginHorizontal: 10, marginTop: 10, fontWeight: '600' }}>
+      <Text
+        style={{
+          marginHorizontal: 10,
+          marginTop: 0,
+          fontWeight: '600',
+          fontSize: 18,
+        }}
+      >
         Categorias por Edad
       </Text>
       <View
         style={{
           flex: 1,
-          margin: 5,
+          marginHorizontal: 15,
           borderRadius: 5,
-          borderWidth: 1,
-          paddingTop: 5,
-          justifyContent: 'flex-start',
-          alignSelf: 'stretch',
+          alignItems: 'center',
+          justifyContent: 'space-around',
+          paddingVertical: 5,
         }}
       >
         {Object.entries(DATA.ages).map(([age, value], index) => {
           return (
-            <View style={{ flex: 1, flexDirection: 'row' }} key={index}>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+                borderTopWidth: 1,
+                alignContent: 'center',
+                paddingTop: 5,
+                marginTop: 5,
+              }}
+              key={index}
+            >
               {Object.entries(value).map((categorie, index) => {
                 return (
                   <Checkbox
@@ -138,16 +171,18 @@ const Checkbox = ({ label, data, setModes, categorie }) => {
       style={{
         flexDirection: 'row',
         justifyContent: 'flex-end',
-        marginVertical: 10,
-        marginHorizontal: 5,
+        marginVertical: 2,
+        marginHorizontal: 10,
       }}
     >
       {categorie === undefined ? (
-        <Text>{label}</Text>
+        <Text style={{ fontWeight: '500', fontSize: 16 }}>{label}</Text>
       ) : (
-        <Text>{'+' + label + ' ' + categorie}</Text>
+        <Text style={{ fontWeight: '500' }}>
+          {'+' + label + ' ' + categorie}
+        </Text>
       )}
-      <View style={{ width: 20, marginHorizontal: 5 }}>
+      <View style={{ marginHorizontal: 5 }}>
         <CheckBox
           onPress={() => handlePress(label, categorie)}
           checked={categorie ? data[label][categorie] : data[label]}

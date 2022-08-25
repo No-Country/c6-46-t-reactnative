@@ -1,6 +1,6 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import React from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { setLoggedState } from '../redux/reducers/isLoggedReducer';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
@@ -10,34 +10,46 @@ export const Perfil = ({ navigation }) => {
   /* const dispatch = useDispatch();
   const navigation = useNavigation(); */
   return (
-    <View style={{ flex: 1 }}>
-      <TouchableOpacity onPress={() => navigation.navigate('Configuracion')}>
-        <Text
-          style={{
-            top: 5,
-            left: '88%',
-            color: 'orange',
-            fontSize: 36,
-            fontWeight: '900',
-            borderRadius: 50,
-          }}
+    <ScrollView contentContainerStyle={{ zIndex: 1, flexGrow: 1 }}>
+      <View style={{ position: 'absolute', zIndex: 100, top: 0, right: '15%' }}>
+        <TouchableOpacity
+          style={{}}
+          onPress={() => navigation.navigate('Configuracion')}
         >
-          ⚙
-        </Text>
-      </TouchableOpacity>
+          <Text
+            style={{
+              top: 5,
+              left: '88%',
+              color: 'orange',
+              fontSize: 50,
+              fontWeight: '900',
+              borderRadius: 50,
+            }}
+          >
+            ⚙
+          </Text>
+        </TouchableOpacity>
+      </View>
+
       <Image
         source={profile.avatar}
         style={{
-          flex: 2,
+          flex: 100,
           position: 'relative',
-          top: '-7%',
+          top: 15,
           resizeMode: 'contain',
           width: '100%',
-          zIndex: -10,
+          zIndex: -100,
         }}
       />
+
       <View style={{ flex: 1, margin: 10 }}>
-        <View style={{ ...rowStyle, ...{ backgroundColor: 'lightgrey' } }}>
+        <View
+          style={{
+            ...rowStyle,
+            ...{ backgroundColor: 'lightgrey' },
+          }}
+        >
           <Cell text={'Edad'}></Cell>
           <Cell text={'Titulos'}></Cell>
         </View>
@@ -45,7 +57,12 @@ export const Perfil = ({ navigation }) => {
           <Cell text={'31'}></Cell>
           <Cell text={'8'}></Cell>
         </View>
-        <View style={{ ...rowStyle, ...{ backgroundColor: 'lightgrey' } }}>
+        <View
+          style={{
+            ...rowStyle,
+            ...{ backgroundColor: 'lightgrey', justifyContent: 'flex-end' },
+          }}
+        >
           <Cell></Cell>
           <Cell text={'Rank'}></Cell>
           <Cell text={'Victorias'}></Cell>
@@ -60,7 +77,10 @@ export const Perfil = ({ navigation }) => {
         <View
           style={{
             ...rowStyle,
-            ...{ backgroundColor: 'lightgrey' },
+            ...{
+              backgroundColor: 'lightgrey',
+              justifyContent: 'flex-end',
+            },
           }}
         >
           <Cell></Cell>
@@ -75,31 +95,30 @@ export const Perfil = ({ navigation }) => {
           <Cell text={'5'}></Cell>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
 const rowStyle = {
   flexDirection: 'row',
-  paddingHorizontal: 10,
+  paddingHorizontal: 5,
   paddingVertical: 2,
 };
 
 const Cell = ({ text }) => {
   return (
     <TextCell>
-      <Text>{text}</Text>
+      <Text style={{ fontSize: 18 }}>{text}</Text>
     </TextCell>
   );
 };
 
 const TextCell = styled.View`
   width: 23%;
-  align-items: flex-end;
-  border-bottom-width: 1px;
+  margin-horizontal: 5px;
+  align-items: center;
+  border-bottom-width: 0px;
 `;
-
-const TableRow = () => {};
 
 const profile = {
   avatar: {

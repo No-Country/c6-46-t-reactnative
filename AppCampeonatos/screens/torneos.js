@@ -56,7 +56,7 @@ const profiles = [
 export const Torneos = ({ navigation }) => {
   const isLoggedIn = useSelector(getLoggedState);
   const handlePress = () => {
-    if (isLoggedIn) {
+    if (isLoggedIn === true) {
       navigation.navigate('Crear Torneo');
     } else {
       navigation.navigate('Iniciar Sesion');
@@ -110,8 +110,8 @@ export const Torneos = ({ navigation }) => {
           })}
         </StyledView>
       </ScrollView>
-      <TouchableOpacity onPress={handlePress}>
-        <Plus>
+      <Plus>
+        <TouchableOpacity onPress={handlePress}>
           <Text
             style={{
               fontSize: 34,
@@ -119,8 +119,8 @@ export const Torneos = ({ navigation }) => {
           >
             ➕
           </Text>
-        </Plus>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      </Plus>
     </>
   );
 };
@@ -195,4 +195,5 @@ const Plus = styled.View`
   align-items: center;
   margin: 5px;
   border: 2px darkgrey;
+  z-index: 1;
 `;
