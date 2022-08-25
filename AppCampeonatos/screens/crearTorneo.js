@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput } from 'react-native';
 import { MyInput } from '../components/myInput';
+import { MyButton } from '../components/myButton';
 import DatePicker from 'react-native-modern-datepicker';
 import {
   setName,
@@ -9,8 +10,6 @@ import {
   setStartDate,
   setEndDate,
   setInscriptionDate,
-  setGameMode,
-  setCategories,
   setEliminatories,
   setOrganizer,
   getInscriptionDate,
@@ -19,7 +18,7 @@ import {
 } from '../redux/reducers/eventInfoReducer';
 import { useDispatch, useSelector } from 'react-redux';
 
-export const CrearTorneo = () => {
+export const CrearTorneo = ({ navigation }) => {
   const [showModal, setShowModal] = useState(false);
   const [calendarID, setCalendarID] = useState('');
   const dispatch = useDispatch();
@@ -98,6 +97,11 @@ export const CrearTorneo = () => {
             style={{ flex: 1 }}
           ></DatePicker>
         )}
+        <MyButton
+          text={'Continuar'}
+          toScreen={'Modalidades'}
+          navigation={navigation}
+        ></MyButton>
       </View>
     </View>
   );
@@ -117,12 +121,11 @@ const Calendar = ({ label, id, date, handlePress }) => {
           alignSelf: 'center',
           margin: 10,
           paddingVertical: 3,
-          paddingHorizontal: 10,
+          paddingHorizontal: 5,
           borderWidth: 1,
           borderRadius: 5,
           color: 'hsl(0,0%,45%)',
         }}
-        defaultValue={'Fecha'}
         editable={false}
         value={date}
       ></TextInput>

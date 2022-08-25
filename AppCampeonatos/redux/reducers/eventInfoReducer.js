@@ -11,6 +11,7 @@ export const eventInfoSlice = createSlice({
     inscriptionDate: '',
     gameMode: [],
     categories: [],
+    ages: [],
     eliminatories: [],
     organizer: '',
   },
@@ -42,6 +43,9 @@ export const eventInfoSlice = createSlice({
     setEliminatories: (state, input) => {
       state.eliminatories.push(input.payload);
     },
+    setAges: (state, input) => {
+      state.ages.push(input.payload);
+    },
     setOrganizer: (state, input) => {
       state.organizer = input.payload;
     },
@@ -59,6 +63,7 @@ export const {
   setCategories,
   setEliminatories,
   setOrganizer,
+  setAges,
 } = eventInfoSlice.actions;
 
 export const getName = (state) => state.eventInfo.name;
@@ -70,6 +75,7 @@ export const getInscriptionDate = (state) => state.eventInfo.inscriptionDate;
 export const getGameMode = (state) => state.eventInfo.gameMode;
 export const getCategories = (state) => state.eventInfo.categories;
 export const getEliminatories = (state) => state.eventInfo.eliminatories;
+export const getAges = (state) => state.eventInfo.ages;
 export const getOrganizer = (state) => state.eventInfo.organizer;
 
 export default eventInfoSlice.reducer;

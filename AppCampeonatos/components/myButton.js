@@ -1,7 +1,5 @@
 import React from 'react';
 import { TouchableOpacity, Text } from 'react-native';
-import { useSelector } from 'react-redux';
-import { getLoggedState } from '../redux/reducers/isLoggedReducer';
 
 export const MyButton = ({
   text,
@@ -10,7 +8,6 @@ export const MyButton = ({
   toScreen,
   toScreenParams,
 }) => {
-  /* const loggedState = useSelector(getLoggedState); */
   const handlePress = () => {
     if (toScreen) {
       if (toScreenParams) {
