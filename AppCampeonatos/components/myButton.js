@@ -1,7 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Text } from 'react-native';
-import { useSelector } from 'react-redux';
-import { getLoggedState } from '../redux/reducers/isLoggedReducer';
+import { TouchableOpacity, Text, View } from 'react-native';
 
 export const MyButton = ({
   text,
@@ -10,11 +8,15 @@ export const MyButton = ({
   toScreen,
   toScreenParams,
 }) => {
-  /* const loggedState = useSelector(getLoggedState); */
   const handlePress = () => {
-    if (dispatch === undefined) {
-      navigation.navigate(toScreen, toScreenParams);
-    } else {
+    if (toScreen) {
+      if (toScreenParams) {
+        navigation.navigate(toScreen, toScreenParams);
+      } else {
+        navigation.navigate(toScreen);
+      }
+    }
+    if (dispatch) {
       dispatch();
     }
   };
@@ -22,7 +24,7 @@ export const MyButton = ({
     <TouchableOpacity
       style={{
         paddingHorizontal: 15,
-        paddingVertical: 10,
+        paddingVertical: 7,
         backgroundColor: 'orange',
         flexDirection: 'row',
         borderRadius: 5,
@@ -35,7 +37,7 @@ export const MyButton = ({
     >
       <Text
         style={{
-          fontSize: 12,
+          fontSize: 16,
           color: 'black',
           fontWeight: '400',
         }}

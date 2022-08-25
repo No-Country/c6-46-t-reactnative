@@ -13,6 +13,7 @@ import { MyButton } from '../components/myButton';
 import { MyInput } from '../components/myInput';
 import { useDispatch } from 'react-redux';
 import { setLoggedState } from '../redux/reducers/isLoggedReducer';
+import { setEmail, setPassword } from '../redux/reducers/userInfoReducer';
 
 export const LogIn = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ export const LogIn = ({ navigation }) => {
           >
             <Text
               style={{
-                fontSize: 40,
+                fontSize: 50,
                 color: 'orange',
                 fontWeight: '700',
               }}
@@ -41,13 +42,20 @@ export const LogIn = ({ navigation }) => {
             </Text>
           </View>
           <View style={{ flex: 2 }}>
-            <MyInput label={'E-mail'} />
-            <MyInput label={'Contraseña'} />
+            <MyInput
+              label={'E-mail'}
+              action={(data) => dispatch(setEmail(data))}
+            />
+            <MyInput
+              label={'Contraseña'}
+              action={(data) => dispatch(setPassword(data))}
+            />
             <Text
               style={{
-                marginVertical: 5,
+                marginVertical: 10,
                 marginHorizontal: 10,
                 textAlign: 'right',
+                fontSize: 16,
               }}
             >
               Olvidaste tu constraseña?
@@ -56,7 +64,7 @@ export const LogIn = ({ navigation }) => {
           <View
             style={{
               flex: 3,
-              justifyContent: 'center',
+              justifyContent: 'space-around',
               width: '80%',
               marginHorizontal: 'auto',
               alignSelf: 'center',
@@ -67,7 +75,7 @@ export const LogIn = ({ navigation }) => {
               dispatch={() => dispatch(setLoggedState())}
             />
             <MyButton
-              text={'Registrarse'}
+              text={'Registrarme'}
               toScreen={'Registro'}
               navigation={navigation}
             />

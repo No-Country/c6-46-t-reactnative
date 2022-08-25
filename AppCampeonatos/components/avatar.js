@@ -1,6 +1,7 @@
-import { useNavigation, DrawerActions } from '@react-navigation/native';
 import React from 'react';
 import styled from 'styled-components/native';
+import { DrawerActions } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 const StyledTouchable = styled.TouchableOpacity`
   border-radius: 25px;
@@ -14,15 +15,15 @@ const StyledImage = styled.Image`
   border-color: green;
   width: 60px;
   height: 60px;
-  resize-mode: cover;
+  resize-mode: stretch;
 `;
 
 export const Avatar = ({}) => {
   const navigation = useNavigation();
   const handlePress = () => {
-    console.log();
-    navigation.dispatch(DrawerActions.toggleDrawer());
+    /* navigation.dispatch(DrawerActions.toggleDrawer()); */
   };
+
   return (
     <StyledTouchable onPress={handlePress}>
       <StyledImage
