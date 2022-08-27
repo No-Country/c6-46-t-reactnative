@@ -1,0 +1,69 @@
+{
+  "jugadores": [
+    {
+      "name": "Juan Jose Garcia Lopez",
+      "state": "BA",
+      "rank": "12",
+      "points": "130"
+    },
+    {
+      "name": "Jose Alberto Garcia",
+      "state": "MI",
+      "rank": "04",
+      "points": "200"
+    },
+    {
+      "name": "Eduardo Perez Garcia",
+      "state": "LP",
+      "rank": "07",
+      "points": "170"
+    }
+  ],
+  "torneos": [
+    {
+      "name": "Copa Tennis Buenos Aires",
+      "description": "Este evento tiene inscripcion",
+      "location": "Estado Obras",
+      "organizer": "ATPBA",
+      "startDate": "2022-02-01",
+      "endDate": "2022-02-03",
+      "inscriptionDate": "2022-01-29",
+      "gameMode": { "masculino": "true", "femenino": "true", "mixto": "true" },
+      "categories": { "A": "true", "B": "true" },
+      "ages": {
+        "30": { "A": "true", "B": "true" },
+        "40": { "A": "true", "B": "true" }
+      }
+    },
+    {
+      "name": "ATP Tour La Pampa",
+      "description": "Este evento tiene inscripcion",
+      "location": "Club Deportivo La Pampa",
+      "organizer": "ATPLaPampa",
+      "startDate": "2022-02-01",
+      "endDate": "2022-02-03",
+      "inscriptionDate": "2022-01-29",
+      "gameMode": { "masculino": "true", "femenino": "true", "mixto": "true" },
+      "categories": { "A": "true", "C": "true" },
+      "ages": {
+        "30": { "A": "true", "C": "true" },
+        "50": { "A": "true", "C": "true" }
+      }
+    },
+    {
+      "name": "Grand Slam Misiones",
+      "description": "Este evento tiene inscripcion",
+      "location": "Campo de Deportes",
+      "organizer": "MIATP",
+      "startDate": "2022-02-01",
+      "endDate": "2022-02-03",
+      "inscriptionDate": "2022-01-29",
+      "gameMode": { "masculino": "true", "femenino": "true" },
+      "categories": { "A": "true", "B": "true" },
+      "ages": {
+        "30": { "A": "true", "B": "true" },
+        "40": { "C": "true", "D": "true" }
+      }
+    }
+  ]
+}

@@ -14,16 +14,16 @@ export const Rankings = () => {
         }}
       >
         <Cell style={{ flex: 1.2 }}>
-          <Text style={{ fontWeight: '700', fontSize: 18 }}>Ranking</Text>
+          <Text style={{ fontWeight: '500', fontSize: 18 }}>Ranking</Text>
         </Cell>
         <Cell style={{ flex: 1.9 }}>
-          <Text style={{ fontWeight: '700', fontSize: 18 }}>Jugador</Text>
+          <Text style={{ fontWeight: '500', fontSize: 18 }}>Jugador</Text>
         </Cell>
         <Cell style={{ flex: 1.1 }}>
-          <Text style={{ fontWeight: '700', fontSize: 18 }}>Provincia</Text>
+          <Text style={{ fontWeight: '500', fontSize: 18 }}>Provincia</Text>
         </Cell>
         <Cell style={{ flex: 1.1 }}>
-          <Text style={{ fontWeight: '700', fontSize: 18 }}>Pts</Text>
+          <Text style={{ fontWeight: '500', fontSize: 18 }}>Pts</Text>
         </Cell>
       </View>
       <ScrollView
@@ -57,10 +57,10 @@ const TableRow = ({ data, color }) => {
       }}
     >
       <Cell style={{ flex: 1.1 }}>
-        <Text style={{ fontWeight: '500', fontSize: 18 }}>#{data.ranking}</Text>
+        <Text style={{ fontWeight: '500', fontSize: 16 }}>#{data.ranking}</Text>
       </Cell>
       <Cell style={{ flex: 2 }}>
-        <Text style={{ fontWeight: '700', fontSize: 14 }}>
+        <Text style={{ fontWeight: '500', fontSize: 14 }}>
           {data.name.toUpperCase()}
         </Text>
       </Cell>

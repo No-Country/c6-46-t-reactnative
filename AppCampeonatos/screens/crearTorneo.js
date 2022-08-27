@@ -117,6 +117,9 @@ export const CrearTorneo = ({ navigation }) => {
                 <DatePicker
                   onSelectedChange={(date) => handleSelect(date)}
                   style={{ flex: 1 }}
+                  minimumDate="2022-01-01"
+                  maximumDate="2032-12-31"
+                  minuteInterval={5}
                 ></DatePicker>
               </View>
             )}

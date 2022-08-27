@@ -10,7 +10,7 @@ export const Perfil = ({ navigation }) => {
   /* const dispatch = useDispatch();
   const navigation = useNavigation(); */
   return (
-    <ScrollView contentContainerStyle={{ zIndex: 1, flexGrow: 1 }}>
+    <>
       <View style={{ position: 'absolute', zIndex: 100, top: 0, right: '15%' }}>
         <TouchableOpacity
           style={{}}
@@ -30,72 +30,73 @@ export const Perfil = ({ navigation }) => {
           </Text>
         </TouchableOpacity>
       </View>
+      <ScrollView contentContainerStyle={{ zIndex: 1, flexGrow: 1 }}>
+        <Image
+          source={profile.avatar}
+          style={{
+            flex: 100,
+            position: 'relative',
+            top: 15,
+            resizeMode: 'contain',
+            width: '100%',
+            zIndex: -100,
+          }}
+        />
 
-      <Image
-        source={profile.avatar}
-        style={{
-          flex: 100,
-          position: 'relative',
-          top: 15,
-          resizeMode: 'contain',
-          width: '100%',
-          zIndex: -100,
-        }}
-      />
-
-      <View style={{ flex: 1, margin: 10 }}>
-        <View
-          style={{
-            ...rowStyle,
-            ...{ backgroundColor: 'lightgrey' },
-          }}
-        >
-          <Cell text={'Edad'}></Cell>
-          <Cell text={'Titulos'}></Cell>
+        <View style={{ flex: 1, margin: 10 }}>
+          <View
+            style={{
+              ...rowStyle,
+              ...{ backgroundColor: 'lightgrey' },
+            }}
+          >
+            <Cell text={'Edad'}></Cell>
+            <Cell text={'Titulos'}></Cell>
+          </View>
+          <View style={rowStyle}>
+            <Cell text={'31'}></Cell>
+            <Cell text={'8'}></Cell>
+          </View>
+          <View
+            style={{
+              ...rowStyle,
+              ...{ backgroundColor: 'lightgrey', justifyContent: 'flex-end' },
+            }}
+          >
+            <Cell></Cell>
+            <Cell text={'Rank'}></Cell>
+            <Cell text={'Victorias'}></Cell>
+            <Cell text={'Derrotas'}></Cell>
+          </View>
+          <View style={rowStyle}>
+            <Cell text={'Actual'}></Cell>
+            <Cell text={'14'}></Cell>
+            <Cell text={'5'}></Cell>
+            <Cell text={'5'}></Cell>
+          </View>
+          <View
+            style={{
+              ...rowStyle,
+              ...{
+                backgroundColor: 'lightgrey',
+                justifyContent: 'flex-end',
+              },
+            }}
+          >
+            <Cell></Cell>
+            <Cell text={'Rank'}></Cell>
+            <Cell text={'Victorias'}></Cell>
+            <Cell text={'Derrotas'}></Cell>
+          </View>
+          <View style={rowStyle}>
+            <Cell text={'Historico'}></Cell>
+            <Cell text={'3'}></Cell>
+            <Cell text={'5'}></Cell>
+            <Cell text={'5'}></Cell>
+          </View>
         </View>
-        <View style={rowStyle}>
-          <Cell text={'31'}></Cell>
-          <Cell text={'8'}></Cell>
-        </View>
-        <View
-          style={{
-            ...rowStyle,
-            ...{ backgroundColor: 'lightgrey', justifyContent: 'flex-end' },
-          }}
-        >
-          <Cell></Cell>
-          <Cell text={'Rank'}></Cell>
-          <Cell text={'Victorias'}></Cell>
-          <Cell text={'Derrotas'}></Cell>
-        </View>
-        <View style={rowStyle}>
-          <Cell text={'Actual'}></Cell>
-          <Cell text={'14'}></Cell>
-          <Cell text={'5'}></Cell>
-          <Cell text={'5'}></Cell>
-        </View>
-        <View
-          style={{
-            ...rowStyle,
-            ...{
-              backgroundColor: 'lightgrey',
-              justifyContent: 'flex-end',
-            },
-          }}
-        >
-          <Cell></Cell>
-          <Cell text={'Rank'}></Cell>
-          <Cell text={'Victorias'}></Cell>
-          <Cell text={'Derrotas'}></Cell>
-        </View>
-        <View style={rowStyle}>
-          <Cell text={'Historico'}></Cell>
-          <Cell text={'3'}></Cell>
-          <Cell text={'5'}></Cell>
-          <Cell text={'5'}></Cell>
-        </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </>
   );
 };
 

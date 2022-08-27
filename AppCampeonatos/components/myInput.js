@@ -3,7 +3,7 @@ import { View, Text, TextInput } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { setEmail, setPassword } from '../redux/reducers/userInfoReducer';
 
-export const MyInput = ({ label, action }) => {
+export const MyInput = ({ label, action, type }) => {
   const dispatch = useDispatch();
   const handleChange = (newInput) => {
     if (action) {
@@ -21,6 +21,7 @@ export const MyInput = ({ label, action }) => {
         }}
       >
         <TextInput
+          secureTextEntry={type}
           onChangeText={handleChange}
           style={{
             width: '90%',

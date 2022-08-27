@@ -33,9 +33,9 @@ export const LogIn = ({ navigation }) => {
           >
             <Text
               style={{
-                fontSize: 50,
+                fontSize: 46,
                 color: 'orange',
-                fontWeight: '700',
+                fontWeight: '500',
               }}
             >
               Iniciar Sesion
@@ -48,6 +48,7 @@ export const LogIn = ({ navigation }) => {
             />
             <MyInput
               label={'Contraseña'}
+              type={true}
               action={(data) => dispatch(setPassword(data))}
             />
             <Text
@@ -64,7 +65,7 @@ export const LogIn = ({ navigation }) => {
           <View
             style={{
               flex: 3,
-              justifyContent: 'space-around',
+              justifyContent: 'space-evenly',
               width: '80%',
               marginHorizontal: 'auto',
               alignSelf: 'center',
@@ -85,3 +86,5 @@ export const LogIn = ({ navigation }) => {
     </KeyboardAvoidingView>
   );
 };
+
+const admin = { email: 'Admin', pass: 'admin1234' };
