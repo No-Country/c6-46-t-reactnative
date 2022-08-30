@@ -19,8 +19,6 @@ import {
   setStartDate,
   setEndDate,
   setInscriptionDate,
-  setEliminatories,
-  setOrganizer,
   getInscriptionDate,
   getEndDate,
   getStartDate,

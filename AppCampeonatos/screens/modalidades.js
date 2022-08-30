@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text } from 'react-native';
 import { MyButton } from '../components/myButton';
 import { CheckBox } from 'react-native-btr';
@@ -6,7 +6,11 @@ import {
   setGameMode,
   setCategories,
   setAges,
+  setOrganizer,
+  setID,
 } from '../redux/reducers/eventInfoReducer';
+import { useDispatch, useSelector, useStore } from 'react-redux';
+import uuid from 'react-native-uuid';
 
 const DATA = {
   modes: {
@@ -29,9 +33,21 @@ const DATA = {
 };
 
 export const Modalidades = ({}) => {
-  const [modes, setModes] = useState(DATA.modes);
-  const [categories, setCategories] = useState(DATA.categories);
-  const [ages, setAges] = useState(DATA.ages);
+  const [mode, setMode] = useState(DATA.modes);
+  const [categorie, setCategorie] = useState(DATA.categories);
+  const [age, setAge] = useState(DATA.ages);
+  const dispatch = useDispatch();
+
+  const store = useStore().getState();
+  useEffect(() => {
+    const id = uuid.v4();
+    dispatch(setID(id));
+  }, []);
+  const handleSubmit = () => {
+    dispatch(setGameMode(mode));
+    dispatch(setCategories(categorie));
+    dispatch(setAges(age));
+  };
 
   return (
     <View style={{ flex: 1 }}>
@@ -55,12 +71,12 @@ export const Modalidades = ({}) => {
           justifyContent: 'center',
         }}
       >
-        {Object.entries(DATA.modes).map((mode, index) => {
+        {Object.entries(DATA.modes).map((mod, index) => {
           return (
             <Checkbox
-              label={mode[0]}
-              data={modes}
-              setModes={setModes}
+              label={mod[0]}
+              data={mode}
+              setMode={setMode}
               key={index}
             />
           );
@@ -86,12 +102,12 @@ export const Modalidades = ({}) => {
           justifyContent: 'center',
         }}
       >
-        {Object.entries(DATA.categories).map((categorie, index) => {
+        {Object.entries(DATA.categories).map((cat, index) => {
           return (
             <Checkbox
-              label={categorie[0]}
-              data={categories}
-              setModes={setCategories}
+              label={cat[0]}
+              data={categorie}
+              setMode={setCategorie}
               key={index}
             />
           );
@@ -117,7 +133,7 @@ export const Modalidades = ({}) => {
           paddingVertical: 5,
         }}
       >
-        {Object.entries(DATA.ages).map(([age, value], index) => {
+        {Object.entries(DATA.ages).map(([id, value], index) => {
           return (
             <View
               style={{
@@ -131,13 +147,13 @@ export const Modalidades = ({}) => {
               }}
               key={index}
             >
-              {Object.entries(value).map((categorie, index) => {
+              {Object.entries(value).map((categ, index) => {
                 return (
                   <Checkbox
-                    label={age}
-                    categorie={categorie[0]}
-                    data={ages}
-                    setModes={setAges}
+                    label={id}
+                    categorie={categ[0]}
+                    data={age}
+                    setMode={setAge}
                     key={index}
                   />
                 );
@@ -146,24 +162,24 @@ export const Modalidades = ({}) => {
           );
         })}
       </View>
-      <MyButton text={'Continuar'}></MyButton>
+      <MyButton text={'Crear Torneo'} dispatch={handleSubmit}></MyButton>
     </View>
   );
 };
 
-const Checkbox = ({ label, data, setModes, categorie }) => {
+const Checkbox = ({ label, data, setMode, categorie }) => {
   const handlePress = (key, ...value) => {
     if (value[0]) {
       let newData = data[key][value[0]];
       newData = !newData;
-      setModes((prev) => ({
+      setMode((prev) => ({
         ...prev,
         [key]: { ...prev[key], [value[0]]: newData },
       }));
     } else {
       let newData = data[key];
       newData = !newData;
-      setModes((prev) => ({ ...prev, [key]: newData }));
+      setMode((prev) => ({ ...prev, [key]: newData }));
     }
   };
   return (

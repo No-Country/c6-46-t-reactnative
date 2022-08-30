@@ -3,19 +3,22 @@ import { createSlice } from '@reduxjs/toolkit';
 export const eventInfoSlice = createSlice({
   name: 'eventInfo',
   initialState: {
+    id: '',
     name: '',
     description: '',
     location: '',
     startDate: '',
     endDate: '',
     inscriptionDate: '',
-    gameMode: [],
-    categories: [],
-    ages: [],
-    eliminatories: [],
-    organizer: '',
+    gameMode: {},
+    categories: {},
+    ages: {},
+    eliminatories: {},
   },
   reducers: {
+    setID: (state, input) => {
+      state.id = input.payload;
+    },
     setName: (state, input) => {
       state.name = input.payload;
     },
@@ -35,16 +38,16 @@ export const eventInfoSlice = createSlice({
       state.inscriptionDate = input.payload;
     },
     setGameMode: (state, input) => {
-      state.gameMode.push(input.payload);
+      state.gameMode = { ...state.gameMode, ...input.payload };
     },
     setCategories: (state, input) => {
-      state.categories.push(input.payload);
+      state.categories = { ...state.categories, ...input.payload };
     },
     setEliminatories: (state, input) => {
-      state.eliminatories.push(input.payload);
+      state.eliminatories = { ...state.eliminatories, ...input.payload };
     },
     setAges: (state, input) => {
-      state.ages.push(input.payload);
+      state.ages = { ...state.ages, ...input.payload };
     },
     setOrganizer: (state, input) => {
       state.organizer = input.payload;
@@ -53,6 +56,7 @@ export const eventInfoSlice = createSlice({
 });
 
 export const {
+  setID,
   setName,
   setDescription,
   setLocation,
@@ -66,6 +70,7 @@ export const {
   setAges,
 } = eventInfoSlice.actions;
 
+export const getID = (state) => state.eventInfo.id;
 export const getName = (state) => state.eventInfo.name;
 export const getDescription = (state) => state.eventInfo.description;
 export const getLocation = (state) => state.eventInfo.location;

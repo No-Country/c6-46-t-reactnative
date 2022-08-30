@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/native';
 import { Text, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { MyButton } from '../components/myButton';
@@ -9,51 +9,17 @@ import { getLoggedState } from '../redux/reducers/isLoggedReducer';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { Eliminatorias } from './eliminatorias';
 import { Participantes } from './participantes';
+import { getInscription } from '../redux/reducers/userInfoReducer';
+import { Card } from '../components/myCard';
+
+const DATA = require('../assets/datos.json');
 
 const Stack = createNativeStackNavigator();
 
-const torneos = [
-  {
-    title: 'Open tennis',
-    organizer: 'Club de Deportes',
-    where: 'Campo de Deportes',
-  },
-  {
-    title: 'Open tennis 2',
-    organizer: 'Country Club',
-    where: 'Estadio Obras',
-  },
-  {
-    title: 'Open grand prix',
-    organizer: 'Club de Deportes 2',
-    where: 'River plei',
-  },
-  {
-    title: 'Open grand prix',
-    organizer: 'Club de Deportes 2',
-    where: 'River plei',
-  },
-];
-
-const profiles = [
-  {
-    firstName: 'jose',
-    lastName: 'lopez',
-    teams: ['mandiyu'],
-  },
-  {
-    firstName: 'juan',
-    lastName: 'perez',
-    teams: ['mandiyu'],
-  },
-  {
-    firstName: 'jorge',
-    lastName: 'alvarez',
-    teams: ['mandiyu'],
-  },
-];
-
-export const Torneos = ({ navigation }) => {
+export const Torneos = ({ route, navigation }) => {
+  const [toRender, setToRender] = useState(Object.entries(DATA.torneos));
+  const [idScreen, setIdScreen] = useState('Home');
+  const inscriptions = useSelector(getInscription);
   const isLoggedIn = useSelector(getLoggedState);
   const handlePress = () => {
     if (isLoggedIn === true) {
@@ -62,47 +28,66 @@ export const Torneos = ({ navigation }) => {
       navigation.navigate('Iniciar Sesion');
     }
   };
+  useEffect(() => {
+    if (route.params) {
+      setIdScreen(route.params.idScreen);
+    }
+    switch (idScreen) {
+      case 'Home':
+        setToRender(Object.entries(DATA.torneos));
+        break;
+      case 'Mis Torneos':
+        setToRender(Object.entries(inscriptions));
+        break;
+      default:
+        setToRender(Object.entries(DATA.torneos));
+        break;
+    }
+  }, [idScreen, inscriptions]);
   return (
     <>
       <ScrollView>
         <StyledView direction="row">
-          {torneos.map((torneo, index) => {
+          {toRender.map(([id, torneo]) => {
             return (
-              <Card key={index}>
-                <StyledText>{torneo.title}</StyledText>
-                <StyledText>{torneo.organizer}</StyledText>
-                <StyledText>{torneo.where}</StyledText>
-                <StyledText color="pink">Participantes:</StyledText>
-                <Card direction="row">
-                  {profiles.map((profile, index) => {
+              <Card key={id}>
+                <StyledText fontWeight={'bold'}>{torneo.name}</StyledText>
+                <StyledText fontWeight={'bold'}>{torneo.organizer}</StyledText>
+                <StyledText fontWeight={'bold'}>{torneo.location}</StyledText>
+                <StyledText color={'darkgreen'}>
+                  Algunos Participantes:
+                </StyledText>
+                <Card direction="row" border={'0px'}>
+                  {Object.entries(DATA.jugadores).map(([id, profile]) => {
                     return (
-                      <Card width="20%" key={index}>
+                      <Card width="27%" border={'0px'} key={id}>
                         <Image
                           source={{
                             uri: 'https://images.unsplash.com/photo-1544765773-a8dce1f272f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1994&q=80',
                           }}
                           style={{ height: 40, width: 40, borderRadius: 50 }}
                         />
-                        <StyledText>{profile.firstName}</StyledText>
-                        <StyledText>{profile.lastName}</StyledText>
-                        <StyledText color="red">{profile.teams[0]}</StyledText>
+                        <StyledText>{profile.name}</StyledText>
+                        <StyledText>Rank #{profile.rank}</StyledText>
+                        <StyledText color="red" fontWeight={'bold'}>
+                          {profile.state}
+                        </StyledText>
                       </Card>
                     );
                   })}
                 </Card>
                 {isLoggedIn ? (
                   <MyButton
-                    text="Inscribirse"
+                    text="Ver Torneo"
                     navigation={navigation}
                     toScreen={'Torneo'}
-                    toScreenParams={{ idTorneo: '123abc' }}
+                    toScreenParams={{ idTorneo: id }}
                   />
                 ) : (
                   <MyButton
                     text="Registrarse"
                     navigation={navigation}
                     toScreen={'Iniciar Sesion'}
-                    toScreenParams={{ idTorneo: '123abc' }}
                   />
                 )}
               </Card>
@@ -110,17 +95,19 @@ export const Torneos = ({ navigation }) => {
           })}
         </StyledView>
       </ScrollView>
-      <Plus>
-        <TouchableOpacity onPress={handlePress}>
-          <Text
-            style={{
-              fontSize: 34,
-            }}
-          >
-            ➕
-          </Text>
-        </TouchableOpacity>
-      </Plus>
+      {idScreen === 'Home' ? (
+        <Plus>
+          <TouchableOpacity onPress={handlePress}>
+            <Text
+              style={{
+                fontSize: 34,
+              }}
+            >
+              ➕
+            </Text>
+          </TouchableOpacity>
+        </Plus>
+      ) : null}
     </>
   );
 };
@@ -130,7 +117,13 @@ const Tabs = createMaterialTopTabNavigator();
 export const TorneosTabs = () => {
   return (
     <Tabs.Navigator>
-      <Tabs.Screen name="Mis Torneos" component={Torneos}></Tabs.Screen>
+      <Tabs.Screen name="Mis Torneos">
+        {(props) => (
+          <Torneos
+            {...{ ...props, route: { params: { idScreen: 'Mis Torneos' } } }}
+          />
+        )}
+      </Tabs.Screen>
       <Tabs.Screen name="Participantes" component={Participantes}></Tabs.Screen>
       <Tabs.Screen name="Eliminatorias" component={Eliminatorias}></Tabs.Screen>
     </Tabs.Navigator>
@@ -149,37 +142,32 @@ export const TorneosStack = () => {
         name="MisTorneos"
         component={TorneosTabs}
       />
-      <Stack.Screen name="Torneo" options={{ headerShown: false }}>
-        {(props) => (
+      <Stack.Screen
+        name="Torneo"
+        component={Torneo}
+        options={{ headerShown: false }}
+      >
+        {/* {(props) => (
           <Torneo
             {...{ ...props, route: { params: { idTorneo: '123abc' } } }}
           />
-        )}
+        )} */}
       </Stack.Screen>
     </Stack.Navigator>
   );
 };
 
 const StyledView = styled.View`
-  justify-content: space-evenly;
+  justify-content: center;
   flex-flow: ${(props) => props.direction || 'row'} wrap;
-  background-color: white;
+  background-color: rgb(20, 170, 20);
 `;
 
 const StyledText = styled.Text`
-  color: ${(props) => props.color || 'orange'};
+  color: ${(props) => props.color || 'darkorange'};
+  font-size: 16px;
   text-align: center;
-`;
-
-const Card = styled.View`
-  width: ${(props) => props.width || '90%'};
-  background-color: green;
-  border-radius: 5px;
-  margin: 5px 5px;
-  flex-flow: ${(props) => props.direction || 'column'} wrap;
-  justify-content: space-evenly;
-  align-items: center;
-  color: white;
+  font-weight: ${(props) => props.fontWeight || '400'};
 `;
 
 const Plus = styled.View`

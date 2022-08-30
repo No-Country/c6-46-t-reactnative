@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, TextInput } from 'react-native';
-import { useDispatch } from 'react-redux';
-import { setEmail, setPassword } from '../redux/reducers/userInfoReducer';
 
 export const MyInput = ({ label, action, type }) => {
-  const dispatch = useDispatch();
   const handleChange = (newInput) => {
     if (action) {
       action(newInput);

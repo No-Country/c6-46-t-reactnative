@@ -1,26 +1,26 @@
 {
-  "jugadores": [
-    {
+  "jugadores": {
+    "A": {
       "name": "Juan Jose Garcia Lopez",
       "state": "BA",
       "rank": "12",
       "points": "130"
     },
-    {
+    "B": {
       "name": "Jose Alberto Garcia",
       "state": "MI",
       "rank": "04",
       "points": "200"
     },
-    {
+    "C": {
       "name": "Eduardo Perez Garcia",
       "state": "LP",
       "rank": "07",
       "points": "170"
     }
-  ],
-  "torneos": [
-    {
+  },
+  "torneos": {
+    "1": {
       "name": "Copa Tennis Buenos Aires",
       "description": "Este evento tiene inscripcion",
       "location": "Estado Obras",
@@ -35,7 +35,7 @@
         "40": { "A": "true", "B": "true" }
       }
     },
-    {
+    "2": {
       "name": "ATP Tour La Pampa",
       "description": "Este evento tiene inscripcion",
       "location": "Club Deportivo La Pampa",
@@ -50,7 +50,7 @@
         "50": { "A": "true", "C": "true" }
       }
     },
-    {
+    "3": {
       "name": "Grand Slam Misiones",
       "description": "Este evento tiene inscripcion",
       "location": "Campo de Deportes",
@@ -65,5 +65,8 @@
         "40": { "C": "true", "D": "true" }
       }
     }
-  ]
+  },
+  "users": {
+    "admin@admin.com": "Admin1234!"
+  }
 }
