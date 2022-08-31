@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Torneos, TorneosStack } from '../screens/torneos';
 import { Rankings } from '../screens/rankings';
 import { LogIn } from '../screens/logIn';
 import { getLoggedState } from '../redux/reducers/isLoggedReducer';
 import { useSelector } from 'react-redux';
-import { DrawerNav } from './drawerNav';
 import { Perfil } from '../screens/perfil';
 
 const Tabs = createBottomTabNavigator();
@@ -36,18 +35,17 @@ export const TabNav = () => {
     <Tabs.Navigator
       screenOptions={{
         headerShown: false,
-        activeTintColor: 'black',
         tabBarStyle: {
           backgroundColor: 'white',
-          height: 72,
+          height: 76,
         },
-        tabBarActiveTintColor: 'white',
-        tabBarInactiveTintColor: 'black',
-        tabBarActiveBackgroundColor: 'orange',
+        tabBarActiveTintColor: 'darkorange',
+        tabBarInactiveTintColor: 'grey',
+        tabBarActiveBackgroundColor: 'white',
         tabBarAllowFontScaling: true,
         tabBarLabelStyle: {
-          fontSize: 16,
-          fontWeight: '500',
+          fontSize: 17,
+          fontWeight: '700',
         },
       }}
     >

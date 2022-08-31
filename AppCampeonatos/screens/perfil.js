@@ -20,7 +20,7 @@ export const Perfil = ({ navigation }) => {
             style={{
               top: 5,
               left: '88%',
-              color: 'orange',
+              color: 'darkorange',
               fontSize: 50,
               fontWeight: '900',
               borderRadius: 50,
@@ -47,11 +47,11 @@ export const Perfil = ({ navigation }) => {
           <View
             style={{
               ...rowStyle,
-              ...{ backgroundColor: 'lightgrey' },
+              ...{ backgroundColor: 'darkorange' },
             }}
           >
-            <Cell text={'Edad'}></Cell>
-            <Cell text={'Titulos'}></Cell>
+            <Cell text={'Edad'} color={'white'}></Cell>
+            <Cell text={'Titulos'} color={'white'}></Cell>
           </View>
           <View style={rowStyle}>
             <Cell text={'31'}></Cell>
@@ -60,13 +60,13 @@ export const Perfil = ({ navigation }) => {
           <View
             style={{
               ...rowStyle,
-              ...{ backgroundColor: 'lightgrey', justifyContent: 'flex-end' },
+              ...{ backgroundColor: 'darkorange', justifyContent: 'flex-end' },
             }}
           >
             <Cell></Cell>
-            <Cell text={'Rank'}></Cell>
-            <Cell text={'Victorias'}></Cell>
-            <Cell text={'Derrotas'}></Cell>
+            <Cell text={'Rank'} color={'white'}></Cell>
+            <Cell text={'Victorias'} color={'white'}></Cell>
+            <Cell text={'Derrotas'} color={'white'}></Cell>
           </View>
           <View style={rowStyle}>
             <Cell text={'Actual'}></Cell>
@@ -78,15 +78,15 @@ export const Perfil = ({ navigation }) => {
             style={{
               ...rowStyle,
               ...{
-                backgroundColor: 'lightgrey',
+                backgroundColor: 'darkorange',
                 justifyContent: 'flex-end',
               },
             }}
           >
             <Cell></Cell>
-            <Cell text={'Rank'}></Cell>
-            <Cell text={'Victorias'}></Cell>
-            <Cell text={'Derrotas'}></Cell>
+            <Cell text={'Rank'} color={'white'}></Cell>
+            <Cell text={'Victorias'} color={'white'}></Cell>
+            <Cell text={'Derrotas'} color={'white'}></Cell>
           </View>
           <View style={rowStyle}>
             <Cell text={'Historico'}></Cell>
@@ -106,10 +106,14 @@ const rowStyle = {
   paddingVertical: 2,
 };
 
-const Cell = ({ text }) => {
+const Cell = ({ text, color }) => {
   return (
     <TextCell>
-      <Text style={{ fontSize: 18 }}>{text}</Text>
+      <Text
+        style={{ fontSize: 20, color: color || 'black', fontWeight: '600' }}
+      >
+        {text}
+      </Text>
     </TextCell>
   );
 };

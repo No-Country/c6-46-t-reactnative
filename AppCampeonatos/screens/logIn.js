@@ -34,10 +34,10 @@ export const LogIn = ({ navigation }) => {
       if (pass === DATA.users[user] || pass === storage[user]) {
         dispatch(setLoggedState());
       } else {
-        Alert.alert('Credenciales Incorrectas');
+        Alert.alert('Credenciales Incorrectas 💥');
       }
     } else {
-      Alert.alert('Credenciales Incorrectas');
+      Alert.alert('Credenciales Incorrectas 💥');
     }
   };
 
@@ -67,18 +67,24 @@ export const LogIn = ({ navigation }) => {
     const storage = await getStorageCredentials();
     if (user !== '') {
       if (DATA.users.hasOwnProperty(user) || storage.hasOwnProperty(user)) {
-        Alert.alert('Credenciales Incorrectas', 'Ya existe este usuario');
+        Alert.alert('Credenciales Incorrectas 💥', 'Ya existe este usuario');
       } else if (pass !== '') {
         setStorageCredentials(user, pass);
-        Alert.alert('Nuevo Usuario', 'Registro Exitoso. Puede Iniciar Sesion.');
+        Alert.alert(
+          'Nuevo Usuario 🎉',
+          'Registro Exitoso. Puede Iniciar Sesion.'
+        );
       } else {
         Alert.alert(
-          'Nuevo Usuario',
+          'Nuevo Usuario 💥',
           'Registro Fallido. Ingrese Contraseña valida. \n\nMinimo 8 caracteres. (Mayusculas, minusculas, numeros y caracteres especiales)'
         );
       }
     } else {
-      Alert.alert('Nuevo Usuario', 'Registro Fallido. Ingrese E-mail valido.');
+      Alert.alert(
+        'Nuevo Usuario 💥',
+        'Registro Fallido. Ingrese E-mail valido.'
+      );
     }
   };
 
@@ -154,16 +160,17 @@ export const LogIn = ({ navigation }) => {
             <Text
               style={{
                 marginVertical: 10,
-                marginHorizontal: 10,
+                marginRight: 15,
                 textAlign: 'right',
-                fontSize: 16,
+                fontSize: 18,
+                fontWeight: '500',
                 color: 'darkorange',
                 textDecorationLine: 'underline',
               }}
               onPress={() =>
                 Alert.alert(
                   'Olvidaste tu constraseña !!!',
-                  '\nComo es posible? Dale, hace memoria! \n\n\n*Pista: es la misma que la ultima vez.'
+                  '\nComo es posible? Dale, hace memoria! \n\n\n💡Pista: es la misma que la ultima vez.'
                 )
               }
             >
@@ -185,7 +192,8 @@ export const LogIn = ({ navigation }) => {
                 marginBottom: 10,
                 marginTop: 10,
                 marginHorizontal: 10,
-                fontSize: 16,
+                fontSize: 18,
+                fontWeight: '500',
               }}
             >
               No tenes cuenta? Crea una:

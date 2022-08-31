@@ -5,7 +5,7 @@ export const userInfoSlice = createSlice({
   initialState: {
     email: '',
     password: '',
-    inscription: {},
+    inscriptions: {},
   },
   reducers: {
     setEmail: (state, input) => {
@@ -14,16 +14,25 @@ export const userInfoSlice = createSlice({
     setPassword: (state, input) => {
       state.password = input.payload;
     },
-    setInscription: (state, input) => {
-      state.inscription = { ...state.inscription, ...input.payload };
+    setInscriptions: (state, input) => {
+      state.inscriptions = { ...state.inscriptions, ...input.payload };
+    },
+    setInscriptionsDiscard: (state, input) => {
+      const { [input.payload]: value, ...newState } = state.inscriptions;
+      state.inscriptions = { ...newState };
     },
   },
 });
 
-export const { setEmail, setPassword, setInscription } = userInfoSlice.actions;
+export const {
+  setEmail,
+  setPassword,
+  setInscriptions,
+  setInscriptionsDiscard,
+} = userInfoSlice.actions;
 
 export const getEmail = (state) => state.userInfo.email;
 export const getPassword = (state) => state.userInfo.password;
-export const getInscription = (state) => state.userInfo.inscription;
+export const getInscriptions = (state) => state.userInfo.inscriptions;
 
 export default userInfoSlice.reducer;

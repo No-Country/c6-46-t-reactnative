@@ -5,8 +5,8 @@ export const Card = styled.View`
   background-color: white;
   border-radius: 20px;
   border: ${(props) => props.border} black;
-  margin: 5px 5px;
-  flex-flow: ${(props) => props.direction || 'column'} wrap;
-  justify-content: center;
+  margin-vertical: 5px;
+  flex-flow: ${(props) => props.direction || 'column'};
+  justify-content: space-evenly;
   align-items: center;
 `;

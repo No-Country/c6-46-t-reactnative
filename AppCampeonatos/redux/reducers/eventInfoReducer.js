@@ -1,21 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = {
+  newForm: false,
+  id: '',
+  name: '',
+  description: '',
+  location: '',
+  startDate: '',
+  endDate: '',
+  inscriptionDate: '',
+  gameMode: {},
+  categories: {},
+  ages: {},
+  eliminatories: {},
+};
+
 export const eventInfoSlice = createSlice({
   name: 'eventInfo',
-  initialState: {
-    id: '',
-    name: '',
-    description: '',
-    location: '',
-    startDate: '',
-    endDate: '',
-    inscriptionDate: '',
-    gameMode: {},
-    categories: {},
-    ages: {},
-    eliminatories: {},
-  },
+  initialState: initialState,
   reducers: {
+    resetEventStore: (state, input) => {
+      return initialState;
+    },
+    setNewForm: (state, input) => {
+      state.newForm = input.payload;
+    },
     setID: (state, input) => {
       state.id = input.payload;
     },
@@ -56,6 +65,8 @@ export const eventInfoSlice = createSlice({
 });
 
 export const {
+  resetEventStore,
+  setNewForm,
   setID,
   setName,
   setDescription,
@@ -70,6 +81,7 @@ export const {
   setAges,
 } = eventInfoSlice.actions;
 
+export const getNewForm = (state) => state.eventInfo.newForm;
 export const getID = (state) => state.eventInfo.id;
 export const getName = (state) => state.eventInfo.name;
 export const getDescription = (state) => state.eventInfo.description;

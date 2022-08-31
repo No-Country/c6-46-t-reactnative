@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { MyButton } from '../components/myButton';
 import { useDispatch } from 'react-redux';
 import { setLoggedState } from '../redux/reducers/isLoggedReducer';
@@ -18,6 +18,7 @@ export const Settings = ({ navigation }) => {
   const handleErase = async () => {
     try {
       await AsyncStorage.removeItem('@users');
+      await AsyncStorage.removeItem('@events');
     } catch (e) {
       console.log(e);
     }
@@ -26,6 +27,17 @@ export const Settings = ({ navigation }) => {
 
   return (
     <View style={{ marginTop: 40 }}>
+      <Text
+        style={{
+          fontWeight: '900',
+          color: 'darkorange',
+          fontSize: 90,
+          textAlign: 'center',
+          marginBottom: 15,
+        }}
+      >
+        ⚙
+      </Text>
       <MyButton
         text="Editar Perfil"
         /* toScreen={"Editar Perfil"} */

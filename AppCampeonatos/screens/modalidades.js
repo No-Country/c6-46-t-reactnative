@@ -1,16 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 import { MyButton } from '../components/myButton';
 import { CheckBox } from 'react-native-btr';
 import {
   setGameMode,
   setCategories,
   setAges,
-  setOrganizer,
   setID,
+  setNewForm,
+  getNewForm,
+  getName,
+  getDescription,
+  getStartDate,
+  getEndDate,
+  getInscriptionDate,
+  getLocation,
+  getID,
+  resetEventStore,
 } from '../redux/reducers/eventInfoReducer';
 import { useDispatch, useSelector, useStore } from 'react-redux';
 import uuid from 'react-native-uuid';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getEmail, setInscriptions } from '../redux/reducers/userInfoReducer';
 
 const DATA = {
   modes: {
@@ -32,21 +43,73 @@ const DATA = {
   },
 };
 
-export const Modalidades = ({}) => {
+export const getStorageEvents = async () => {
+  try {
+    const jsonValue = await AsyncStorage.getItem('@events');
+    return jsonValue !== null ? JSON.parse(jsonValue) : null;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const Modalidades = ({ navigation }) => {
   const [mode, setMode] = useState(DATA.modes);
   const [categorie, setCategorie] = useState(DATA.categories);
   const [age, setAge] = useState(DATA.ages);
+  const eventId = useSelector(getID);
   const dispatch = useDispatch();
+  const newForm = useSelector(getNewForm);
+  const organizer = useSelector(getEmail);
+  const name = useSelector(getName);
+  const location = useSelector(getLocation);
+  const description = useSelector(getDescription);
+  const startDate = useSelector(getStartDate);
+  const endDate = useSelector(getEndDate);
+  const inscriptionDate = useSelector(getInscriptionDate);
 
-  const store = useStore().getState();
   useEffect(() => {
-    const id = uuid.v4();
-    dispatch(setID(id));
-  }, []);
+    if (newForm) {
+      let id = uuid.v4();
+      dispatch(setID(id));
+    }
+  }, [newForm]);
+
   const handleSubmit = () => {
     dispatch(setGameMode(mode));
     dispatch(setCategories(categorie));
     dispatch(setAges(age));
+    const toStore = {
+      name: name,
+      description: description,
+      location: location,
+      organizer: organizer,
+      startDate: startDate,
+      endDate: endDate,
+      inscriptionDate: inscriptionDate,
+      gameMode: mode,
+      categories: categorie,
+      ages: age,
+    };
+    if (newForm) {
+      dispatch(setInscriptions({ [eventId]: toStore }));
+      dispatch(resetEventStore());
+    }
+    navigation.navigate('MisTorneos');
+    Alert.alert(
+      'Creacion Exitosa 🎉',
+      'Nuevo Torneo agregado. \n\n"Torneos" -> "Mis Torneos"'
+    );
+  };
+
+  const setStorageEvents = async (field, value) => {
+    try {
+      const storage = await getStorageEvents();
+      const newValue = { ...storage, ...{ [field]: value } };
+      const jsonValue = JSON.stringify(newValue);
+      await AsyncStorage.setItem('@events', jsonValue);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
