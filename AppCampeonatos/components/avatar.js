@@ -1,7 +1,19 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { DrawerActions } from '@react-navigation/native';
-import { useNavigation } from '@react-navigation/native';
+
+export const Avatar = ({}) => {
+  const handlePress = () => {};
+
+  return (
+    <StyledTouchable onPress={handlePress}>
+      <StyledImage
+        source={{
+          uri: 'https://images.unsplash.com/photo-1605395630162-1c7cc7a34590?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80',
+        }}
+      />
+    </StyledTouchable>
+  );
+};
 
 const StyledTouchable = styled.TouchableOpacity`
   border-radius: 25px;
@@ -15,22 +27,5 @@ const StyledImage = styled.Image`
   border-color: green;
   width: 60px;
   height: 60px;
-  resize-mode: stretch;
+  resize-mode: contain;
 `;
-
-export const Avatar = ({}) => {
-  const navigation = useNavigation();
-  const handlePress = () => {
-    /* navigation.dispatch(DrawerActions.toggleDrawer()); */
-  };
-
-  return (
-    <StyledTouchable onPress={handlePress}>
-      <StyledImage
-        source={{
-          uri: 'https://images.unsplash.com/photo-1544765773-a8dce1f272f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1994&q=80',
-        }}
-      />
-    </StyledTouchable>
-  );
-};

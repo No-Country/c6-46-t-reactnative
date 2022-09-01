@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Torneos, TorneosStack } from '../screens/torneos';
 import { Rankings } from '../screens/rankings';
 import { LogIn } from '../screens/logIn';
 import { getLoggedState } from '../redux/reducers/isLoggedReducer';
 import { useSelector } from 'react-redux';
-import { DrawerNav } from './drawerNav';
 import { Perfil } from '../screens/perfil';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
+/* Main tab, rendered by main Stack in navigation.js */
 const Tabs = createBottomTabNavigator();
 
 export const TabNav = () => {
@@ -34,22 +35,58 @@ export const TabNav = () => {
   };
   return (
     <Tabs.Navigator
-      screenOptions={{
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          switch (route.name) {
+            case 'Home':
+              return (
+                <Ionicons
+                  name={'home-outline'}
+                  size={42}
+                  color={focused ? 'darkorange' : 'grey'}
+                />
+              );
+            case 'Ranking':
+              return (
+                <Ionicons
+                  name={'stats-chart-outline'}
+                  size={42}
+                  color={focused ? 'darkorange' : 'grey'}
+                />
+              );
+            case 'Torneos':
+              return (
+                <Ionicons
+                  name={'tennisball-outline'}
+                  size={42}
+                  color={focused ? 'darkorange' : 'grey'}
+                />
+              );
+            default:
+              return (
+                <Ionicons
+                  name={'person-outline'}
+                  size={42}
+                  color={focused ? 'darkorange' : 'grey'}
+                />
+              );
+          }
+        },
+        tabBarHideOnKeyboard: true,
         headerShown: false,
-        activeTintColor: 'black',
         tabBarStyle: {
           backgroundColor: 'white',
-          height: 72,
+          height: 76,
         },
-        tabBarActiveTintColor: 'white',
-        tabBarInactiveTintColor: 'black',
-        tabBarActiveBackgroundColor: 'orange',
+        tabBarActiveTintColor: 'darkorange',
+        tabBarInactiveTintColor: 'grey',
+        tabBarActiveBackgroundColor: 'white',
         tabBarAllowFontScaling: true,
         tabBarLabelStyle: {
-          fontSize: 16,
-          fontWeight: '500',
+          fontSize: 17,
+          fontWeight: '700',
         },
-      }}
+      })}
     >
       {toRender()}
     </Tabs.Navigator>

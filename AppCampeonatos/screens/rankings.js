@@ -9,66 +9,90 @@ export const Rankings = () => {
         style={{
           flexDirection: 'row',
           height: 60,
-          backgroundColor: 'lightgrey',
+          backgroundColor: 'darkorange',
           alignItems: 'center',
         }}
       >
         <Cell style={{ flex: 1.2 }}>
-          <Text style={{ fontWeight: '700', fontSize: 18 }}>Ranking</Text>
+          <Text style={{ fontWeight: '500', fontSize: 18, color: 'white' }}>
+            Ranking
+          </Text>
         </Cell>
         <Cell style={{ flex: 1.9 }}>
-          <Text style={{ fontWeight: '700', fontSize: 18 }}>Jugador</Text>
+          <Text style={{ fontWeight: '500', fontSize: 18, color: 'white' }}>
+            Jugador
+          </Text>
         </Cell>
         <Cell style={{ flex: 1.1 }}>
-          <Text style={{ fontWeight: '700', fontSize: 18 }}>Provincia</Text>
+          <Text style={{ fontWeight: '500', fontSize: 18, color: 'white' }}>
+            Provincia
+          </Text>
         </Cell>
         <Cell style={{ flex: 1.1 }}>
-          <Text style={{ fontWeight: '700', fontSize: 18 }}>Pts</Text>
+          <Text style={{ fontWeight: '500', fontSize: 18, color: 'white' }}>
+            Pts
+          </Text>
         </Cell>
       </View>
       <ScrollView
         contentContainerStyle={{
-          backgroundColor: 'orange',
           flexGrow: 1,
         }}
       >
         {data.map((row, index) => {
           let color = 'white';
+          let tColor = 'black';
           if (index % 2 === 0) {
-            color = 'orange';
+            color = 'white' || 'rgb(100, 180, 100)';
+            tColor = 'black';
+          } else {
+            color = 'rgb(100, 180, 100)' || 'orange';
+            tColor = 'white';
           }
-          return <TableRow data={row} key={index} color={color} />;
+          return (
+            <TableRow data={row} key={index} bkColor={color} color={tColor} />
+          );
         })}
       </ScrollView>
     </>
   );
 };
 
-const TableRow = ({ data, color }) => {
+const TableRow = ({ data, bkColor, color }) => {
   return (
     <View
       style={{
         flexDirection: 'row',
         flex: 1,
-        backgroundColor: color,
+        backgroundColor: bkColor,
         alignItems: 'center',
         justifyItems: 'center',
         paddingVertical: 10,
       }}
     >
       <Cell style={{ flex: 1.1 }}>
-        <Text style={{ fontWeight: '500', fontSize: 18 }}>#{data.ranking}</Text>
+        <Text
+          style={{ fontWeight: '500', fontSize: 16, color: color || 'black' }}
+        >
+          #{data.ranking}
+        </Text>
       </Cell>
       <Cell style={{ flex: 2 }}>
-        <Text style={{ fontWeight: '700', fontSize: 14 }}>
+        <Text
+          style={{ fontWeight: '500', fontSize: 14, color: color || 'black' }}
+        >
           {data.name.toUpperCase()}
         </Text>
       </Cell>
       <Cell style={{ flex: 1 }}>
-        <Text style={{ fontSize: 18 }}>{data.provincia}</Text>
+        <Text style={{ fontSize: 18, color: color || 'black' }}>
+          {data.provincia}
+        </Text>
       </Cell>
       <Cell style={{ flex: 1 }}>
-        <Text style={{ fontSize: 18 }}>{data.puntos}</Text>
+        <Text style={{ fontSize: 18, color: color || 'black' }}>
+          {data.puntos}
+        </Text>
       </Cell>
     </View>
   );
