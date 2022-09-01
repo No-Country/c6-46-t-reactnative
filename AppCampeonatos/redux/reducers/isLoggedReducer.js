@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+/* Manages statge of logged user; this probably should be in userInfoReducer.js
+but I don't want to break anything right now. Do better backlogs, mate!*/
 export const isLoggedSlice = createSlice({
   name: 'isLoggedIn',
   initialState: {

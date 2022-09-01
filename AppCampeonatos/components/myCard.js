@@ -5,8 +5,10 @@ export const Card = styled.View`
   background-color: white;
   border-radius: 20px;
   border: ${(props) => props.border} black;
-  margin-vertical: 5px;
+  margin-vertical: 10px;
+  padding-vertical: 5px;
+  padding-horizontal: ${(props) => props.paddingH || '0px'};
   flex-flow: ${(props) => props.direction || 'column'};
-  justify-content: space-evenly;
-  align-items: center;
+  justify-content: ${(props) => props.justifyContent || 'space-evenly'};
+  align-items: ${(props) => props.alignItems || 'center'};
 `;

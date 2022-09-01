@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/native';
-import { Text, ScrollView, Image, TouchableOpacity, Alert } from 'react-native';
+import { Text, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { MyButton } from '../components/myButton';
 import { Torneo } from './torneo';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -13,7 +13,6 @@ import { getInscriptions } from '../redux/reducers/userInfoReducer';
 import { Card } from '../components/myCard';
 import { setNewForm } from '../redux/reducers/eventInfoReducer';
 import { setInscriptionsDiscard } from '../redux/reducers/userInfoReducer';
-import { getStorageEvents } from './modalidades';
 
 const DATA = require('../assets/datos.json');
 
@@ -71,10 +70,11 @@ export const Torneos = ({ route, navigation }) => {
                       fontSize: 20,
                       borderWidth: 2,
                       borderRadius: 50,
+                      borderColor: 'darkgrey',
                       width: '6%',
                       flex: 1,
-                      color: 'darkgreen',
-                      backgroundColor: 'orange',
+                      color: 'white',
+                      backgroundColor: 'darkorange',
                       position: 'absolute',
                       top: 0,
                       right: 0,
@@ -95,15 +95,21 @@ export const Torneos = ({ route, navigation }) => {
                 <StyledText color={'darkgreen'}>
                   Algunos Participantes:
                 </StyledText>
-                <Card direction="row" border={'0px'}>
+                <Card justifyContent={'center'} direction="row" border={'0px'}>
                   {Object.entries(DATA.jugadores).map(([index, profile]) => {
                     return (
-                      <Card width="29%" border={'0px'} key={index}>
+                      <Card width="35%" border={'0px'} key={index}>
                         <Image
                           source={{
-                            uri: 'https://images.unsplash.com/photo-1544765773-a8dce1f272f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1994&q=80',
+                            uri: 'https://images.unsplash.com/photo-1605395630162-1c7cc7a34590?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80',
                           }}
-                          style={{ height: 40, width: 40, borderRadius: 50 }}
+                          style={{
+                            height: 70,
+                            width: 70,
+                            borderRadius: 50,
+                            borderWidth: 1,
+                            borderColor: 'black',
+                          }}
                         />
                         <StyledText color="darkgreen">
                           {profile.name}
@@ -142,10 +148,12 @@ export const Torneos = ({ route, navigation }) => {
           <TouchableOpacity onPress={handlePress}>
             <Text
               style={{
-                fontSize: 34,
+                fontSize: 54,
+                textAlignVertical: 'center',
+                color: 'white',
               }}
             >
-              ➕
+              +
             </Text>
           </TouchableOpacity>
         </Plus>
@@ -220,13 +228,12 @@ const Plus = styled.View`
   height: 80px;
   flex-direction: row;
   position: absolute;
-  background-color: orange;
+  background-color: darkorange;
   bottom: 0;
   right: 0;
   border-radius: 50px;
   justify-content: center;
-  align-items: center;
   margin: 5px;
-  border: 2px darkgrey;
+  border: 2px grey;
   z-index: 1;
 `;

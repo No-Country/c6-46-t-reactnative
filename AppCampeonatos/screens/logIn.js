@@ -70,10 +70,8 @@ export const LogIn = ({ navigation }) => {
         Alert.alert('Credenciales Incorrectas 💥', 'Ya existe este usuario');
       } else if (pass !== '') {
         setStorageCredentials(user, pass);
-        Alert.alert(
-          'Nuevo Usuario 🎉',
-          'Registro Exitoso. Puede Iniciar Sesion.'
-        );
+        dispatch(setLoggedState());
+        Alert.alert('Nuevo Usuario 🎉', 'Registro Exitoso. Bienvenido.');
       } else {
         Alert.alert(
           'Nuevo Usuario 💥',
@@ -125,11 +123,12 @@ export const LogIn = ({ navigation }) => {
 
   return (
     <KeyboardAvoidingView
+      keyboardVerticalOffset={-80}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={{ flex: 1 }}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, backgroundColor: 'white' }}>
           <View
             style={{
               flex: 1,
@@ -140,14 +139,14 @@ export const LogIn = ({ navigation }) => {
             <Text
               style={{
                 fontSize: 46,
-                color: 'orange',
+                color: 'darkorange',
                 fontWeight: '500',
               }}
             >
               Iniciar Sesion
             </Text>
           </View>
-          <View style={{ flex: 2 }}>
+          <View style={{ flex: 2, paddingHorizontal: 10 }}>
             <MyInput
               label={'E-mail'}
               action={(data) => handleEmailInput(data)}

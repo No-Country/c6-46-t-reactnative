@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+/* UserInfo Store, manage, reducer, you know...the thing with the actions and states...
+  This one has an "Erase object from object" action, A-Ha!*/
 export const userInfoSlice = createSlice({
   name: 'userInfo',
   initialState: {

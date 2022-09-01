@@ -25,21 +25,21 @@ export const MyButton = ({
       style={{
         paddingHorizontal: 15,
         paddingVertical: 7,
-        backgroundColor: 'orange',
+        backgroundColor: 'darkorange',
         flexDirection: 'row',
         borderRadius: 5,
         margin: 5,
         borderWidth: 1,
-        borderColor: 'black',
+        borderColor: 'darkgrey',
         justifyContent: 'center',
       }}
       onPress={handlePress}
     >
       <Text
         style={{
-          fontSize: 16,
-          color: 'black',
-          fontWeight: '400',
+          fontSize: 17,
+          color: 'white',
+          fontWeight: '500',
         }}
       >
         {text.toUpperCase()}

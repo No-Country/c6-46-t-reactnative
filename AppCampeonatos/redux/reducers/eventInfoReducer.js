@@ -1,5 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+/* This is my main EventCreation form for backend */
+
+/* Separated initialState so as to have a print of it for later Reset =D */
 const initialState = {
   newForm: false,
   id: '',
@@ -17,9 +20,11 @@ const initialState = {
 
 export const eventInfoSlice = createSlice({
   name: 'eventInfo',
-  initialState: initialState,
+  initialState:
+    initialState /* Docs just puts initialState variable here; this is working fine as well*/,
   reducers: {
     resetEventStore: (state, input) => {
+      /* Reset Action to be "Dispatched" */
       return initialState;
     },
     setNewForm: (state, input) => {

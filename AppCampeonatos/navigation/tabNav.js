@@ -6,7 +6,9 @@ import { LogIn } from '../screens/logIn';
 import { getLoggedState } from '../redux/reducers/isLoggedReducer';
 import { useSelector } from 'react-redux';
 import { Perfil } from '../screens/perfil';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
+/* Main tab, rendered by main Stack in navigation.js */
 const Tabs = createBottomTabNavigator();
 
 export const TabNav = () => {
@@ -33,7 +35,44 @@ export const TabNav = () => {
   };
   return (
     <Tabs.Navigator
-      screenOptions={{
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          switch (route.name) {
+            case 'Home':
+              return (
+                <Ionicons
+                  name={'home-outline'}
+                  size={42}
+                  color={focused ? 'darkorange' : 'grey'}
+                />
+              );
+            case 'Ranking':
+              return (
+                <Ionicons
+                  name={'stats-chart-outline'}
+                  size={42}
+                  color={focused ? 'darkorange' : 'grey'}
+                />
+              );
+            case 'Torneos':
+              return (
+                <Ionicons
+                  name={'tennisball-outline'}
+                  size={42}
+                  color={focused ? 'darkorange' : 'grey'}
+                />
+              );
+            default:
+              return (
+                <Ionicons
+                  name={'person-outline'}
+                  size={42}
+                  color={focused ? 'darkorange' : 'grey'}
+                />
+              );
+          }
+        },
+        tabBarHideOnKeyboard: true,
         headerShown: false,
         tabBarStyle: {
           backgroundColor: 'white',
@@ -47,7 +86,7 @@ export const TabNav = () => {
           fontSize: 17,
           fontWeight: '700',
         },
-      }}
+      })}
     >
       {toRender()}
     </Tabs.Navigator>

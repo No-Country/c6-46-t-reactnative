@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const DATA = require('../assets/datos.json');
 
-export const Torneo = ({ route }) => {
+export const Torneo = ({ navigation, route }) => {
   const [idTorneo, setIdTorneo] = useState(1);
   const [toRender, setToRender] = useState(DATA.torneos[idTorneo]);
   const dispatch = useDispatch();
@@ -24,6 +24,7 @@ export const Torneo = ({ route }) => {
   const handleInscription = () => {
     if (notInscript) {
       dispatch(setInscriptions({ [idTorneo]: DATA.torneos[idTorneo] }));
+      navigation.navigate('MisTorneos');
       Alert.alert(
         'Inscripcion Exitosa 🎉',
         "Torneo agregado. \n\n'Torneos' -> 'Mis Torneos'"
@@ -46,10 +47,12 @@ export const Torneo = ({ route }) => {
           backgroundColor: 'rgb(100, 180, 100)',
         }}
       >
-        <Card>
-          <Texto color={'darkorange'} fontWeight={'bold'} fontSize={'26px'}>
-            {toRender.name}
-          </Texto>
+        <Card alignItems={'flex-start'} paddingH={'10px'}>
+          <View style={{ alignSelf: 'center' }}>
+            <Texto color={'darkorange'} fontWeight={'bold'} fontSize={'26px'}>
+              {toRender.name}
+            </Texto>
+          </View>
           <Texto>
             Lugar:{' '}
             <Texto color={'darkorange'} fontWeight={'bold'}>
@@ -118,7 +121,13 @@ export const Torneo = ({ route }) => {
             {toRender.description}
           </Texto>
           {notInscript && (
-            <MyButton text={'Inscribirse'} dispatch={handleInscription} />
+            <View style={{ alignSelf: 'center' }}>
+              <MyButton
+                text={'Inscribirse'}
+                dispatch={handleInscription}
+                alignSelf
+              />
+            </View>
           )}
         </Card>
       </View>
