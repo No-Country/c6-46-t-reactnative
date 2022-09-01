@@ -1,7 +1,9 @@
 {
   "expo": {
-    "name": "AppCampeonatos",
-    "slug": "AppCampeonatos",
+    "name": "Campeones",
+    "slug": "campeones",
+    "owner": "nagual",
+    "description": "App para organizar torneos de Tennis",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
