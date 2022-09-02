@@ -42,4 +42,14 @@ Luego, dentro de ExpoGo, podes escanear este QR o ingresar el link manualmente.
 
 ## Demo:
 
-<video src='./AppCampeonatos/assets/AppCampeonesDemo.mp4' autoplay loop width=360></video>
+https://user-images.githubusercontent.com/91083824/188243619-df378c18-7a9b-424e-849f-8547f3933b71.mp4
+
+
+
+https://user-images.githubusercontent.com/91083824/188243629-dcd624cd-8862-4314-b610-04b1efd593f1.mp4
+
+
+
+https://user-images.githubusercontent.com/91083824/188243649-2b96a6a1-6a40-4f81-82c5-168578c685d5.mp4
+
+
