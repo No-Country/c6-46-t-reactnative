@@ -26,7 +26,7 @@ export const LogIn = ({ navigation }) => {
   const dispatch = useDispatch();
   const user = useSelector(getEmail);
   const pass = useSelector(getPassword);
-  const [valid, setValid] = useState(false);
+  const [valid, setValid] = useState([false, false]);
 
   const handleLogIn = async () => {
     const storage = await getStorageCredentials();
@@ -65,10 +65,10 @@ export const LogIn = ({ navigation }) => {
 
   const handleSignIn = async () => {
     const storage = await getStorageCredentials();
-    if (user !== '') {
+    if (user !== '' && valid[0]) {
       if (DATA.users.hasOwnProperty(user) || storage.hasOwnProperty(user)) {
         Alert.alert('Credenciales Incorrectas 💥', 'Ya existe este usuario');
-      } else if (pass !== '') {
+      } else if (pass !== '' && valid[1]) {
         setStorageCredentials(user, pass);
         dispatch(setLoggedState());
         Alert.alert('Nuevo Usuario 🎉', 'Registro Exitoso. Bienvenido.');
@@ -102,22 +102,22 @@ export const LogIn = ({ navigation }) => {
   const handleEmailInput = (data) => {
     if (validate('user', data)) {
       dispatch(setEmail(data));
-      setValid(true);
+      setValid([true, valid[1]]);
     } else {
-      setValid(false);
+      setValid([false, valid[1]]);
     }
   };
 
   const handlePassInput = (data) => {
     if (validate('pass', data)) {
       if (data.length < 8) {
-        setValid(false);
+        setValid([valid[0], false]);
       } else {
         dispatch(setPassword(data));
-        setValid(true);
+        setValid([valid[0], true]);
       }
     } else {
-      setValid(false);
+      setValid([valid[0], false]);
     }
   };
 
